@@ -5,20 +5,20 @@ import java.io.*;
  * Created by Melissa07 on 2017-09-16.
  */
 public class Anagramme {
-    public static void main(String[] args) {
-        String fileName = getFileName();
+    private static final String DICTIONNARY_NAME = "dict";
+    private static final String WORDS_NAME = "words";
 
+    public static void main(String[] args) {
         try{
-            FileInputStream fstream = new FileInputStream(fileName+".txt");
+            FileInputStream fstream = new FileInputStream(WORDS_NAME+".txt");
             fileReader(fstream);
         }
         catch(FileNotFoundException fnfe){
-            System.out.println("The file : "+fileName+".txt was not found");
+            System.out.println("The file : "+WORDS_NAME+".txt was not found");
         }
     }
 
     private static void fileReader(FileInputStream fstream) throws FileNotFoundException {
-
         try{
 
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
@@ -30,11 +30,5 @@ public class Anagramme {
         catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private static String getFileName(){
-        JFrame frame = new JFrame();
-        String nameOfFile = (String)JOptionPane.showInputDialog(frame, null, "Enter the file name", JOptionPane.PLAIN_MESSAGE, null, null, null);
-        return nameOfFile;
     }
 }
