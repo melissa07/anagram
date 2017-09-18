@@ -26,17 +26,23 @@ public class Anagramme {
     }
 
     private static void findAnagrams(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
+//        long time1 = System.nanoTime();
+
         for (String word: arrayWords) { // O(n^2)
             int nbOfAnagramForWord = 0;
             HashMap<Character, Integer> wordsHash = createHashMap(word);
             for(String dictWord: wordsInDict) {
                 HashMap<Character, Integer> dictWordHash = createHashMap(dictWord);
-                if(dictWordHash.keySet().equals(wordsHash.keySet())) {
+                if(dictWordHash.keySet().equals(wordsHash.keySet())) { // doesnt work. ex: crane and craane are anagrams
                     nbOfAnagramForWord++;
                 }
             }
-            System.out.println("Found "+nbOfAnagramForWord+" anagram for the word: " +word);
+            System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
         }
+
+//        long time2 = System.nanoTime();
+//        long timeTaken = time2 - time1;
+//        System.out.println("Time taken " + timeTaken + " ns");
     }
 
     private static HashMap createHashMap(String word) {
