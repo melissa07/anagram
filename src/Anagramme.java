@@ -26,7 +26,7 @@ public class Anagramme {
     }
 
     private static void findAnagrams(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
-//        long time1 = System.nanoTime();
+        long time1 = System.nanoTime();
 
         for (String word: arrayWords) { // O(n^2)
             int nbOfAnagramForWord = 0;
@@ -40,9 +40,9 @@ public class Anagramme {
             System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
         }
 
-//        long time2 = System.nanoTime();
-//        long timeTaken = time2 - time1;
-//        System.out.println("Time taken " + timeTaken + " ns");
+        long time2 = System.nanoTime();
+        long timeTaken = time2 - time1;
+        System.out.println("Time taken 000000000," + timeTaken + " ns");
     }
 
     private static HashMap createHashMap(String word) {
