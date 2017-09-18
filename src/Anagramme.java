@@ -9,7 +9,6 @@ import java.util.HashMap;
 public class Anagramme {
     private static final String DICTIONNARY_NAME = "dict";
     private static final String WORDS_NAME = "words";
-    private static HashMap<Character, Integer> hashWord1 = new HashMap();
 
     public static void main(String[] args) {
         try{
@@ -28,17 +27,20 @@ public class Anagramme {
 
     private static void findAnagrams(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
         for (String word: arrayWords) { // O(n^2)
+            int nbOfAnagramForWord = 0;
             HashMap<Character, Integer> wordsHash = createHashMap(word);
             for(String dictWord: wordsInDict) {
                 HashMap<Character, Integer> dictWordHash = createHashMap(dictWord);
-                if(dictWordHash.keySet().equals(hashWord1.keySet())) {
-                    System.out.println("Found another anagram for the word: " +word);
+                if(dictWordHash.keySet().equals(wordsHash.keySet())) {
+                    nbOfAnagramForWord++;
                 }
             }
+            System.out.println("Found "+nbOfAnagramForWord+" anagram for the word: " +word);
         }
     }
 
     private static HashMap createHashMap(String word) {
+        HashMap<Character, Integer> hashWord1 = new HashMap();
         char[] stringArray = word.toCharArray();
         for (char character: stringArray) {
             int nbCharsInMap = hashWord1.containsKey(character) ? hashWord1.get(character)+1 : 1;
@@ -61,4 +63,5 @@ public class Anagramme {
         }
         return arrWords;
     }
+
 }
