@@ -17,6 +17,7 @@ public class Anagramme {
 
             FileInputStream dictStream = new FileInputStream((DICTIONNARY_NAME+".txt"));
             ArrayList<String> wordsInDict = fileReader(dictStream);
+            findAnagramsBaseAlgo(arrayWords, wordsInDict);
             findAnagrams(arrayWords, wordsInDict);
 
         }
@@ -26,8 +27,8 @@ public class Anagramme {
     }
 
     private static void findAnagrams(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
-        long time1 = System.nanoTime();
-
+    	System.out.println("New Algo : ");
+//        long time1 = System.nanoTime();
         for (String word: arrayWords) { // O(n^2)
             int nbOfAnagramForWord = 0;
             HashMap<Character, Integer> wordsHash = createHashMap(word);
@@ -40,9 +41,35 @@ public class Anagramme {
             System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
         }
 
-        long time2 = System.nanoTime();
-        long timeTaken = time2 - time1;
-        System.out.println("Time taken 000000000," + timeTaken + " ns");
+//        long time2 = System.nanoTime();
+//        long timeTaken = time2 - time1;
+//        System.out.println("Time taken " + timeTaken + " ns");
+          System.out.println("*******************************************");
+        	
+    }
+    
+    private static void findAnagramsBaseAlgo(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
+    	System.out.println("Base Algo : ");
+//      long time1 = System.nanoTime();
+    	int nbOfAnagramForWord;
+    	boolean trouve;
+    	
+    	for (String word: arrayWords) {
+    		nbOfAnagramForWord = 0;
+    		for(String dictWord: wordsInDict) {
+    			
+    			trouve = AlgorithmeBase.findAnagramsBaseAlgo(word, dictWord);
+    			
+    			if(trouve) {
+    				nbOfAnagramForWord++;
+    			}
+    		}
+    		System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
+    	}
+//      long time2 = System.nanoTime();
+//      long timeTaken = time2 - time1;
+//      System.out.println("Time taken " + timeTaken + " ns");
+    	System.out.println("*******************************************");
     }
 
     private static HashMap createHashMap(String word) {
