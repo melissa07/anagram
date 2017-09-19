@@ -18,39 +18,16 @@ public class Anagramme {
             FileInputStream dictStream = new FileInputStream((DICTIONNARY_NAME+".txt"));
             ArrayList<String> wordsInDict = fileReader(dictStream);
             findAnagramsBaseAlgo(arrayWords, wordsInDict);
-            findAnagrams(arrayWords, wordsInDict);
+            NouveauAlgo.findAnagrams(arrayWords, wordsInDict);
 
         }
         catch(FileNotFoundException fnfe){
             System.out.println("The file : "+WORDS_NAME+".txt was not found");
         }
     }
-
-    private static void findAnagrams(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
-    	System.out.println("New Algo : ");
-//        long time1 = System.nanoTime();
-        for (String word: arrayWords) { // O(n^2)
-            int nbOfAnagramForWord = 0;
-            HashMap<Character, Integer> wordsHash = createHashMap(word);
-            for(String dictWord: wordsInDict) {
-                HashMap<Character, Integer> dictWordHash = createHashMap(dictWord);
-                if(dictWordHash.keySet().equals(wordsHash.keySet())) { // doesnt work. ex: crane and craane are anagrams
-                    nbOfAnagramForWord++;
-                }
-            }
-            System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
-        }
-
-//        long time2 = System.nanoTime();
-//        long timeTaken = time2 - time1;
-//        System.out.println("Time taken " + timeTaken + " ns");
-          System.out.println("*******************************************");
-        	
-    }
     
     private static void findAnagramsBaseAlgo(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
     	System.out.println("Base Algo : ");
-//      long time1 = System.nanoTime();
     	int nbOfAnagramForWord;
     	boolean trouve;
     	
@@ -66,13 +43,10 @@ public class Anagramme {
     		}
     		System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
     	}
-//      long time2 = System.nanoTime();
-//      long timeTaken = time2 - time1;
-//      System.out.println("Time taken " + timeTaken + " ns");
     	System.out.println("*******************************************");
     }
 
-    private static HashMap createHashMap(String word) {
+    public static HashMap createHashMap(String word) {
         HashMap<Character, Integer> hashWord1 = new HashMap();
         char[] stringArray = word.toCharArray();
         for (char character: stringArray) {
