@@ -8,7 +8,7 @@ public class AlgorithmeBase {
 		//debut de l'algo selon le pseudocode
 		
 		for (int i = 0; i < word.length(); i++){
-		    char c1 = word.charAt(i);        
+		    char c1 = word.charAt(i);
 		    trouve = false;
 		    
 		    for (int j = 0; j < dictWord.length() && trouve == false; j++){

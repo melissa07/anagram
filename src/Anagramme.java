@@ -14,11 +14,12 @@ public class Anagramme {
         try{
             FileInputStream fstream = new FileInputStream(WORDS_NAME+".txt");
             ArrayList<String> arrayWords = fileReader(fstream);
-
             FileInputStream dictStream = new FileInputStream((DICTIONNARY_NAME+".txt"));
             ArrayList<String> wordsInDict = fileReader(dictStream);
+
             findAnagramsBaseAlgo(arrayWords, wordsInDict);
             findAnagramsNouveauAlgo(arrayWords, wordsInDict);
+            findAnagramsNouveauAlgoSansHashMap(arrayWords, wordsInDict);
 
         }
         catch(FileNotFoundException fnfe){
@@ -64,6 +65,26 @@ public class Anagramme {
     		System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
     	}
     	System.out.println("*******************************************");
+    }
+
+    private static void findAnagramsNouveauAlgoSansHashMap(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
+        System.out.println("New Algo : ");
+        int nbOfAnagramForWord;
+        boolean trouve;
+
+        for (String word: arrayWords) {
+            nbOfAnagramForWord = 0;
+            for(String dictWord: wordsInDict) {
+
+                trouve = NouveauAlgoSansHashMap.findAnagramsWithoutHashmap(word, dictWord);
+
+                if(trouve) {
+                    nbOfAnagramForWord++;
+                }
+            }
+            System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
+        }
+        System.out.println("*******************************************");
     }
 
     private static ArrayList<String> fileReader(FileInputStream fstream) throws FileNotFoundException {

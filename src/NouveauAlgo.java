@@ -10,7 +10,7 @@ public class NouveauAlgo {
     	HashMap<Character, Integer> wordsHash = createHashMap(word);
         HashMap<Character, Integer> dictWordHash = createHashMap(dictWord);
            
-        if(dictWordHash.keySet().equals(wordsHash.keySet())) {
+        if(wordsHash.keySet().equals(dictWordHash.keySet())) {
           	for(char character: wordsHash.keySet()) {
     			//System.out.println("retour du get : " + wordsHash.get(character));
         		if(wordsHash.get(character) != dictWordHash.get(character)) {
