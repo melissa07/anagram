@@ -7,8 +7,8 @@ import java.util.HashMap;
  * Created by Melissa07 on 2017-09-16.
  */
 public class Anagramme {
-    private static final String DICTIONNARY_NAME = "dict";
-    private static final String WORDS_NAME = "words";
+    private static final String DICTIONNARY_NAME = "dictbig";
+    private static final String WORDS_NAME = "wordsbig";
 
     public static void main(String[] args) {
         try{

@@ -13,7 +13,7 @@ public class NouveauAlgo {
         if(wordsHash.keySet().equals(dictWordHash.keySet())) {
           	for(char character: wordsHash.keySet()) {
     			//System.out.println("retour du get : " + wordsHash.get(character));
-        		if(wordsHash.get(character) != dictWordHash.get(character)) {
+        		if(wordsHash.get(character) != dictWordHash.get(character)) {  //HashMap.get() est O(1)
         			return false;
         		}
         	}
