@@ -18,12 +18,32 @@ public class Anagramme {
             FileInputStream dictStream = new FileInputStream((DICTIONNARY_NAME+".txt"));
             ArrayList<String> wordsInDict = fileReader(dictStream);
             findAnagramsBaseAlgo(arrayWords, wordsInDict);
-            NouveauAlgo.findAnagrams(arrayWords, wordsInDict);
+            findAnagramsNouveauAlgo(arrayWords, wordsInDict);
 
         }
         catch(FileNotFoundException fnfe){
             System.out.println("The file : "+WORDS_NAME+".txt was not found");
         }
+    }
+    
+    private static void findAnagramsNouveauAlgo(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
+    	System.out.println("New Algo : ");
+    	int nbOfAnagramForWord;
+    	boolean trouve;
+    	
+    	for (String word: arrayWords) {
+    		nbOfAnagramForWord = 0;
+    		for(String dictWord: wordsInDict) {
+    			
+    			trouve = NouveauAlgo.findAnagrams(word, dictWord);
+    			
+    			if(trouve) {
+    				nbOfAnagramForWord++;
+    			}
+    		}
+    		System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
+    	}
+    	System.out.println("*******************************************");
     }
     
     private static void findAnagramsBaseAlgo(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
@@ -44,16 +64,6 @@ public class Anagramme {
     		System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
     	}
     	System.out.println("*******************************************");
-    }
-
-    public static HashMap createHashMap(String word) {
-        HashMap<Character, Integer> hashWord1 = new HashMap();
-        char[] stringArray = word.toCharArray();
-        for (char character: stringArray) {
-            int nbCharsInMap = hashWord1.containsKey(character) ? hashWord1.get(character)+1 : 1;
-            hashWord1.put(character,nbCharsInMap);
-        }
-        return hashWord1;
     }
 
     private static ArrayList<String> fileReader(FileInputStream fstream) throws FileNotFoundException {
