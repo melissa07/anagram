@@ -1,4 +1,6 @@
-
+/*
+	reference : http://silveiraneto.net/2008/03/15/simple-java-chronometer/
+*/
 public class Chronometer {
 	 private long begin, end;
 	 
