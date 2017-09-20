@@ -28,9 +28,11 @@ public class Anagramme {
     
     private static void findAnagramsNouveauAlgo(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
     	System.out.println("New Algo : ");
+    	Chronometer chrono = new Chronometer();
     	int nbOfAnagramForWord;
     	boolean trouve;
     	
+    	chrono.start();
     	for (String word: arrayWords) {
     		nbOfAnagramForWord = 0;
     		for(String dictWord: wordsInDict) {
@@ -43,14 +45,18 @@ public class Anagramme {
     		}
     		System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
     	}
+    	chrono.stop();
+    	System.out.println("All Anagram found in : " + chrono.getMilliseconds() + "ms or :" + chrono.getSeconds() + "s.");    	
     	System.out.println("*******************************************");
     }
     
     private static void findAnagramsBaseAlgo(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
     	System.out.println("Base Algo : ");
+    	Chronometer chrono = new Chronometer();
     	int nbOfAnagramForWord;
     	boolean trouve;
     	
+    	chrono.start();
     	for (String word: arrayWords) {
     		nbOfAnagramForWord = 0;
     		for(String dictWord: wordsInDict) {
@@ -63,6 +69,8 @@ public class Anagramme {
     		}
     		System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
     	}
+    	chrono.stop();
+    	System.out.println("All Anagram found in : " + chrono.getMilliseconds() + "ms or :" + chrono.getSeconds() + "s.");
     	System.out.println("*******************************************");
     }
 
