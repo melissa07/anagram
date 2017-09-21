@@ -17,8 +17,8 @@ public class Anagramme {
             FileInputStream dictStream = new FileInputStream((DICTIONNARY_NAME+".txt"));
             ArrayList<String> wordsInDict = fileReader(dictStream);
 
-            findAnagramsBaseAlgo(arrayWords, wordsInDict);
-            findAnagramsNouveauAlgo(arrayWords, wordsInDict);
+//            findAnagramsBaseAlgo(arrayWords, wordsInDict);
+//            findAnagramsNouveauAlgo(arrayWords, wordsInDict);
             findAnagramsNouveauAlgoSansHashMap(arrayWords, wordsInDict);
 
         }

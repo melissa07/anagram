@@ -15,18 +15,19 @@ public class NouveauAlgoSansHashMap {
 
             Arrays.sort(listOfCharInWord);
             Arrays.sort(listOfCharInDictWord);
-
-            for(int i = 0 ; i < word.length() ; i++){
-                if(listOfCharInWord[i] != listOfCharInDictWord[i]){
-                    return false;
-                }
-            }
+            return Arrays.equals(listOfCharInDictWord,listOfCharInWord);
+//            return listOfCharInDictWord.equals(listOfCharInWord);
+//            for(int i = 0 ; i < word.length() ; i++){
+//                if(listOfCharInWord[i] != listOfCharInDictWord[i]){
+//                    return false;
+//                }
+//            }
         }
-        else
-        {
-            return false;
-        }
+//        else
+//        {
+//            return false;
+//        }
 
-        return true;
+        return false;
     }
 }
