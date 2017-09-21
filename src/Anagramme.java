@@ -7,8 +7,8 @@ import java.util.HashMap;
  * Created by Melissa07 on 2017-09-16.
  */
 public class Anagramme {
-    private static final String DICTIONNARY_NAME = "dictbig";
-    private static final String WORDS_NAME = "wordsbig";
+    private static final String DICTIONNARY_NAME = "dict";
+    private static final String WORDS_NAME = "words";
 
     public static void main(String[] args) {
         try{
@@ -83,9 +83,10 @@ public class Anagramme {
 
         chrono.start();
         for (String word: arrayWords) {
+            word = word.trim().replaceAll("\\s+","");
             nbOfAnagramForWord = 0;
             for(String dictWord: wordsInDict) {
-
+                dictWord = dictWord.trim().replaceAll("\\s+","");
                 trouve = NouveauAlgoSansHashMap.findAnagramsWithoutHashmap(word, dictWord);
 
                 if(trouve) {
