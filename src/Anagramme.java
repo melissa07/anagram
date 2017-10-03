@@ -7,8 +7,8 @@ import java.util.HashMap;
  * Created by Melissa07 on 2017-09-16.
  */
 public class Anagramme {
-    private static final String DICTIONNARY_NAME = "dict";
-    private static final String WORDS_NAME = "words";
+    private static final String DICTIONNARY_NAME = "dict50mil";
+    private static final String WORDS_NAME = "words50mil";
 
     public static void main(String[] args) {
         try{
@@ -18,37 +18,12 @@ public class Anagramme {
             ArrayList<String> wordsInDict = fileReader(dictStream);
 
 //            findAnagramsBaseAlgo(arrayWords, wordsInDict);
-//            findAnagramsNouveauAlgo(arrayWords, wordsInDict);
             findAnagramsNouveauAlgoSansHashMap(arrayWords, wordsInDict);
 
         }
         catch(FileNotFoundException fnfe){
-            System.out.println("The file : "+WORDS_NAME+".txt was not found");
+            System.out.println("Message"+fnfe.getMessage());
         }
-    }
-    
-    private static void findAnagramsNouveauAlgo(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
-    	System.out.println("New Algo : ");
-    	Chronometer chrono = new Chronometer();
-    	int nbOfAnagramForWord;
-    	boolean trouve;
-    	
-    	chrono.start();
-    	for (String word: arrayWords) {
-    		nbOfAnagramForWord = 0;
-    		for(String dictWord: wordsInDict) {
-    			
-    			trouve = NouveauAlgo.findAnagrams(word, dictWord);
-    			
-    			if(trouve) {
-    				nbOfAnagramForWord++;
-    			}
-    		}
-    		System.out.println("Found "+nbOfAnagramForWord+" anagram(s) for the word: " +word);
-    	}
-    	chrono.stop();
-    	System.out.println("All Anagram found in : " + chrono.getMilliseconds() + "ms or :" + chrono.getSeconds() + "s.");    	
-    	System.out.println("*******************************************");
     }
     
     private static void findAnagramsBaseAlgo(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
@@ -76,7 +51,6 @@ public class Anagramme {
     }
 
     private static void findAnagramsNouveauAlgoSansHashMap(ArrayList<String> arrayWords, ArrayList<String> wordsInDict) {
-        System.out.println("New Algo Without hashmap: ");
         Chronometer chrono = new Chronometer();
         int nbOfAnagramForWord;
         boolean trouve;
